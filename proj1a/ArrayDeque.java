@@ -51,7 +51,7 @@ public class ArrayDeque<T> {
         front += 1;
         size -= 1;
         /*Too sparse*/
-        if (1.0 * size / items.length < 0.5) {
+        if (size != 0 && 1.0 * size / items.length < 0.5) {
             resize(size);
         }
         return ret;
@@ -66,7 +66,7 @@ public class ArrayDeque<T> {
         back -= 1;
         size -= 1;
         /*Too sparse*/
-        if (1.0 * size / items.length < 0.5) {
+        if (size != 0 && 1.0 * size / items.length < 0.5) {
             resize(size);
         }
         return ret;
@@ -89,19 +89,23 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> list = new ArrayDeque<>();
+//        list.addFirst(0);
+//        list.addFirst(-1);
+//        list.addLast(1);
+//        list.addFirst(-2);
+//        list.addLast(2);
+//        list.printDeque();
+//        for (int i = 0; i < 4; i++) {
+//            list.addFirst(-3 - i);
+//            list.addLast(3 + i);
+//        } list.printDeque();
+//        list.removeFirst();
+//        list.removeFirst();
+//        list.removeLast();
+//        list.printDeque();
         list.addFirst(0);
-        list.addFirst(-1);
-        list.addLast(1);
-        list.addFirst(-2);
-        list.addLast(2);
-        list.printDeque();
-        for (int i = 0; i < 4; i++) {
-            list.addFirst(-3 - i);
-            list.addLast(3 + i);
-        } list.printDeque();
         list.removeFirst();
-        list.removeFirst();
-        list.removeLast();
+        list.addFirst(1);
         list.printDeque();
     }
 }
