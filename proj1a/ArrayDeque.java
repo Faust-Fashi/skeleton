@@ -8,22 +8,23 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
-        front = back = 4;
+        front = 3;
+        back = 4;
     }
     private void resize(int origin_size){
         T[] a = (T[]) new Object[origin_size * 2];
-        System.arraycopy(items, front, a, origin_size / 2, size);
+        System.arraycopy(items, front + 1, a, origin_size / 2, size);
         items = a;
-        front = origin_size / 2;
-        back = front + size - 1;
+        front = origin_size / 2 - 1;
+        back = front + size + 1;
     }
     public void addFirst(T elem) {
         /*Out of Boundary*/
         if (size == items.length || front == 0) {
             resize(size);
         }
-        front -= 1;
         items[front] = elem;
+        front -= 1;
         size += 1;
     }
     public void addLast(T elem) {
@@ -31,14 +32,9 @@ public class ArrayDeque<T> {
         if (size == items.length || back == items.length - 1) {
             resize(size);
         }
-        if(items[back] == null){
-            items[back] = elem;
-            size += 1;
-        } else {
-            back += 1;
-            items[back] = elem;
-            size += 1;
-        }
+        items[back] = elem;
+        back += 1;
+        size += 1;
     }
 
     public T removeFirst() {
@@ -72,7 +68,7 @@ public class ArrayDeque<T> {
         return ret;
     }
     public T get(int index) {
-        return items[front + index];
+        return items[front + index + 1];
     }
     public boolean isEmpty() {
         return size == 0;
@@ -87,8 +83,8 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> list = new ArrayDeque<>();
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> list = new ArrayDeque<>();
 //        list.addFirst(0);
 //        list.addFirst(-1);
 //        list.addLast(1);
@@ -103,9 +99,16 @@ public class ArrayDeque<T> {
 //        list.removeFirst();
 //        list.removeLast();
 //        list.printDeque();
-        list.addFirst(0);
-        list.removeFirst();
-        list.addFirst(1);
-        list.printDeque();
-    }
+//        list.addFirst(0);
+//        list.removeFirst();
+//        System.out.println(list.isEmpty());
+//        list.addFirst(3);
+//        list.printDeque();
+//
+//        list = new ArrayDeque<Integer>();
+//        list.addFirst(0);
+//        list.addFirst(1);
+//        list.removeLast();
+//        System.out.println(list.get(0));
+//    }
 }
