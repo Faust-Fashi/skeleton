@@ -12,7 +12,7 @@ public class ArrayDeque<T> {
         back = 4;
     }
     private void resize(int origin_size){
-        T[] a = (T[]) new Object[origin_size * 2];
+        T[] a = (T[]) new Object[origin_size * 2 + 1];
         System.arraycopy(items, front + 1, a, origin_size / 2, size);
         items = a;
         front = origin_size / 2 - 1;
@@ -42,9 +42,9 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         }
+        front += 1;
         T ret = items[front];
         items[front] = null;
-        front += 1;
         size -= 1;
         /*Too sparse*/
         if (size != 0 && 1.0 * size / items.length < 0.5) {
@@ -57,9 +57,9 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         }
+        back -= 1;
         T ret = items[back];
         items[back] = null;
-        back -= 1;
         size -= 1;
         /*Too sparse*/
         if (size != 0 && 1.0 * size / items.length < 0.5) {
@@ -105,10 +105,26 @@ public class ArrayDeque<T> {
 //        list.addFirst(3);
 //        list.printDeque();
 //
+//        // d003
 //        list = new ArrayDeque<Integer>();
 //        list.addFirst(0);
 //        list.addFirst(1);
-//        list.removeLast();
-//        System.out.println(list.get(0));
+//        System.out.println(list.removeLast()); // ref : 0
+//
+//        // d004
+//        list = new ArrayDeque<Integer>();
+//        list.addLast(0);
+//        System.out.println(list.removeLast()); // ref : 0
+//
+//        // d005
+//        list = new ArrayDeque<Integer>();
+//        list.addLast(0);
+//        System.out.println(list.removeFirst()); // 0
+//        list.isEmpty();
+//        list.addLast(3);
+//        System.out.println(list.removeFirst()); // 3
+//
+//        // d006
+//
 //    }
 }
