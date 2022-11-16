@@ -7,7 +7,7 @@ public class NBody {
         in.readInt();
         return in.readDouble();
     }
-    public static Planet[] readplanetNet(String fileName){
+    public static Planet[] readPlanets(String fileName){
         In in = new In(fileName);
         int N = in.readInt();
         in.readDouble();
@@ -25,7 +25,7 @@ public class NBody {
         double dt = new Double(args[1]);
         String fileName = args[2];
         double radius = readRadius(fileName);
-        Planet[] planetNet = readplanetNet(fileName);
+        Planet[] planetNet = readPlanets(fileName);
         int num_planet = planetNet.length;
         double[] xForces = new double[num_planet];
         double[] yForces = new double[num_planet];
