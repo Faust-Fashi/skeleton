@@ -2,10 +2,10 @@
  * by IDEA
  */
 public class Planet {
-    double xxPos, yyPos;
-    double xxVel, yyVel;
-    double mass;
-    String imgFileName;
+    public double xxPos, yyPos;
+    public double xxVel, yyVel;
+    public double mass;
+    public String imgFileName;
     // deep copy of a instance
     public Planet(Planet p) {
         this.xxPos = p.xxPos;
