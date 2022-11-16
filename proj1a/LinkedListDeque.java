@@ -60,8 +60,8 @@ public class LinkedListDeque<T> {
         if (index >= size) {
             return null;
         }
-        Node ptr = frontSentinel;
-        for (int i = 0; i < size; i++) {
+        Node ptr = frontSentinel.next;
+        for (int i = 0; i < index; i++) {
             ptr = ptr.next;
         } return ptr.item;
     }
@@ -103,5 +103,7 @@ public class LinkedListDeque<T> {
         System.out.println();
         System.out.println(list.removeFirst());
         list.printDeque();
+        System.out.println();
+        System.out.println(list.get(1));
     }
 }
