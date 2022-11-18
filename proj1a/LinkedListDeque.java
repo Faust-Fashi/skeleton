@@ -71,22 +71,23 @@ public class LinkedListDeque<T> {
         }
         return getRecursiveHelper(frontSentinel.next, index);
     }
-    private T getRecursiveHelper(Node n, int index){
-        if (index == 0){
+    private T getRecursiveHelper(Node n, int index) {
+        if (index == 0) {
             return n.item;
-        } return getRecursiveHelper(n.next, index - 1);
+        }
+        return getRecursiveHelper(n.next, index - 1);
     }
     public void printDeque() {
         Node ptr = frontSentinel.next;
-        while (ptr != backSentinel){
+        while (ptr != backSentinel) {
             System.out.print(ptr.item + " ");
             ptr = ptr.next;
         }
     }
     private class Node {
-        public T item;
-        public Node prev, next;
-        private Node(T i, Node p, Node n){
+        private T item;
+        private Node prev, next;
+        private Node(T i, Node p, Node n) {
             item = i;
             prev = p;
             next = n;

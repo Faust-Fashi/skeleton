@@ -11,15 +11,15 @@ public class ArrayDeque<T> {
         front = 3;
         back = 4;
     }
-    private void inflact(int origin_size) {
-        T[] a = (T[]) new Object[origin_size * 2 + 1];
-        System.arraycopy(items, front + 1, a, origin_size / 2, size);
+    private void inflact(int originSize) {
+        T[] a = (T[]) new Object[originSize * 2 + 1];
+        System.arraycopy(items, front + 1, a, originSize / 2, size);
         items = a;
-        front = origin_size / 2 - 1;
+        front = originSize / 2 - 1;
         back = front + size + 1;
     }
-    private void deflact(int origin_size) {
-        T[] a = (T[]) new Object[origin_size + 2];
+    private void deflact(int originSize) {
+        T[] a = (T[]) new Object[originSize + 2];
         System.arraycopy(items, front + 1, a, 1, size);
         items = a;
         front = 0;
