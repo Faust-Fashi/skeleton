@@ -12,11 +12,18 @@ public class ArrayDeque<T> {
         back = 4;
     }
     private void inflact(int originSize) {
-        T[] a = (T[]) new Object[originSize * 2 + 1];
-        System.arraycopy(items, front + 1, a, originSize / 2, size);
-        items = a;
-        front = originSize / 2 - 1;
-        back = front + size + 1;
+        if (size == 0) {
+            items = (T[]) new Object[8];
+            size = 0;
+            front = 3;
+            back = 4;
+        } else{
+            T[] a = (T[]) new Object[originSize * 2 + 1];
+            System.arraycopy(items, front + 1, a, originSize / 2, size);
+            items = a;
+            front = originSize / 2 - 1;
+            back = front + size + 1;
+        }
     }
     private void deflact(int originSize) {
         T[] a = (T[]) new Object[originSize + 2];
@@ -54,7 +61,7 @@ public class ArrayDeque<T> {
         items[front] = null;
         size -= 1;
         /*Too sparse*/
-        if (size != 0 && 1.0 * size / items.length < 0.5) {
+        if (size != 0 && items.length > 8 && 1.0 * size / items.length < 0.5) {
             deflact(size);
         }
         return ret;
@@ -69,7 +76,7 @@ public class ArrayDeque<T> {
         items[back] = null;
         size -= 1;
         /*Too sparse*/
-        if (size != 0 && 1.0 * size / items.length < 0.5) {
+        if (size != 0 && items.length > 8 && 1.0 * size / items.length < 0.5) {
             deflact(size);
         }
         return ret;
@@ -90,21 +97,27 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-//    public static void main(String[] args) {
-//        ArrayDeque<Integer> list = new ArrayDeque<>();
-//        // d00002 Add N items, then remove first then last and ensure they're not null
+    public static void main(String[] args) {
+        ArrayDeque<Integer> list = new ArrayDeque<>();
+        // d00002 Add N items, then remove first then last and ensure they're not null
 //        for (int i = 0; i < 7; i++) {
 //            list.addFirst(i);
 //        }
 //        list.removeFirst();
 //        list.removeLast();
-//        // d002 random add/remove/isempty
-////        list.addFirst(0);
-////        list.addFirst(1);
-////        System.out.println(list.removeFirst());
-////        list.addFirst(3);
-////        list.addFirst(10);
-//
+//        list.addFirst(0);
+//        list.addFirst(1);
+//        list.addFirst(2);
+//        System.out.println(list.removeFirst());
+//        System.out.println(list.removeFirst());
+//        list.addFirst(5);
+        // d002 random add/remove/isempty
+//        list.addFirst(0);
+//        list.addFirst(1);
+//        System.out.println(list.removeFirst());
+//        list.addFirst(3);
+//        list.addFirst(10);
+
 //        System.out.println(list.size());
 //        list.addFirst(1);
 //        list.addFirst(2);
@@ -112,5 +125,15 @@ public class ArrayDeque<T> {
 //        list.addLast(4);
 //        list.isEmpty();
 //        list.addFirst(6);
-//    }
+        // d008 fill up and empty and fill up
+        for (int i = 0; i < 10; i++) {
+            list.addFirst(i);
+        }
+        for (int i = 0; i < 10; i++) {
+            list.removeLast();
+        }
+        for (int i = 0; i < 7; i++) {
+            list.addFirst(i);
+        }
+    }
 }
