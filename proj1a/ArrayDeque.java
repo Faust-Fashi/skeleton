@@ -11,17 +11,24 @@ public class ArrayDeque<T> {
         front = 3;
         back = 4;
     }
-    private void resize(int origin_size){
+    private void inflact(int origin_size) {
         T[] a = (T[]) new Object[origin_size * 2 + 1];
         System.arraycopy(items, front + 1, a, origin_size / 2, size);
         items = a;
         front = origin_size / 2 - 1;
         back = front + size + 1;
     }
+    private void deflact(int origin_size) {
+        T[] a = (T[]) new Object[origin_size + 2];
+        System.arraycopy(items, front + 1, a, 1, size);
+        items = a;
+        front = 0;
+        back = front + size + 1;
+    }
     public void addFirst(T elem) {
         /*Out of Boundary*/
-        if (size == items.length || front == 0) {
-            resize(size);
+        if (size == items.length || front <= 0) {
+            inflact(size);
         }
         items[front] = elem;
         front -= 1;
@@ -29,8 +36,8 @@ public class ArrayDeque<T> {
     }
     public void addLast(T elem) {
         /*Out of Boundary*/
-        if (size == items.length || back == items.length - 1) {
-            resize(size);
+        if (size == items.length || back >= items.length - 1) {
+            inflact(size);
         }
         items[back] = elem;
         back += 1;
@@ -48,7 +55,7 @@ public class ArrayDeque<T> {
         size -= 1;
         /*Too sparse*/
         if (size != 0 && 1.0 * size / items.length < 0.5) {
-            resize(size);
+            deflact(size);
         }
         return ret;
     }
@@ -63,7 +70,7 @@ public class ArrayDeque<T> {
         size -= 1;
         /*Too sparse*/
         if (size != 0 && 1.0 * size / items.length < 0.5) {
-            resize(size);
+            deflact(size);
         }
         return ret;
     }
@@ -76,7 +83,7 @@ public class ArrayDeque<T> {
     public int size() {
         return size;
     }
-    public void printDeque(){
+    public void printDeque() {
         for (int i = 0; i < size; i++) {
             System.out.print(this.get(i) + " ");
         }
@@ -85,46 +92,25 @@ public class ArrayDeque<T> {
 
 //    public static void main(String[] args) {
 //        ArrayDeque<Integer> list = new ArrayDeque<>();
-//        list.addFirst(0);
-//        list.addFirst(-1);
-//        list.addLast(1);
-//        list.addFirst(-2);
-//        list.addLast(2);
-//        list.printDeque();
-//        for (int i = 0; i < 4; i++) {
-//            list.addFirst(-3 - i);
-//            list.addLast(3 + i);
-//        } list.printDeque();
-//        list.removeFirst();
+//        // d00002 Add N items, then remove first then last and ensure they're not null
+//        for (int i = 0; i < 7; i++) {
+//            list.addFirst(i);
+//        }
 //        list.removeFirst();
 //        list.removeLast();
-//        list.printDeque();
-//        list.addFirst(0);
-//        list.removeFirst();
-//        System.out.println(list.isEmpty());
-//        list.addFirst(3);
-//        list.printDeque();
+//        // d002 random add/remove/isempty
+////        list.addFirst(0);
+////        list.addFirst(1);
+////        System.out.println(list.removeFirst());
+////        list.addFirst(3);
+////        list.addFirst(10);
 //
-//        // d003
-//        list = new ArrayDeque<Integer>();
-//        list.addFirst(0);
+//        System.out.println(list.size());
 //        list.addFirst(1);
-//        System.out.println(list.removeLast()); // ref : 0
-//
-//        // d004
-//        list = new ArrayDeque<Integer>();
-//        list.addLast(0);
-//        System.out.println(list.removeLast()); // ref : 0
-//
-//        // d005
-//        list = new ArrayDeque<Integer>();
-//        list.addLast(0);
-//        System.out.println(list.removeFirst()); // 0
+//        list.addFirst(2);
+//        System.out.println(list.removeLast());
+//        list.addLast(4);
 //        list.isEmpty();
-//        list.addLast(3);
-//        System.out.println(list.removeFirst()); // 3
-//
-//        // d006
-//
+//        list.addFirst(6);
 //    }
 }

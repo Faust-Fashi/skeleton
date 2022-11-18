@@ -94,16 +94,16 @@ public class LinkedListDeque<T> {
 
     }
 
-    public static void main(String[] args) {
-        LinkedListDeque list = new LinkedListDeque<Integer>();
-        list.addFirst(00);
-        list.addFirst(01);
-        list.addLast(-11);
-        list.printDeque();
-        System.out.println();
-        System.out.println(list.removeFirst());
-        list.printDeque();
-        System.out.println();
-        System.out.println(list.get(1));
-    }
+//    public static void main(String[] args) {
+//        LinkedListDeque list = new LinkedListDeque<Integer>();
+//        list.addFirst(00);
+//        list.addFirst(01);
+//        list.addLast(-11);
+//        list.printDeque();
+//        System.out.println();
+//        System.out.println(list.removeFirst());
+//        list.printDeque();
+//        System.out.println();
+//        System.out.println(list.get(1));
+//    }
 }
