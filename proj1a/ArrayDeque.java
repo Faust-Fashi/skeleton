@@ -12,18 +12,12 @@ public class ArrayDeque<T> {
         back = 4;
     }
     private void inflact(int originSize) {
-        if (size == 0) {
-            items = (T[]) new Object[8];
-            size = 0;
-            front = 3;
-            back = 4;
-        } else{
-            T[] a = (T[]) new Object[originSize * 2 + 1];
-            System.arraycopy(items, front + 1, a, originSize / 2, size);
-            items = a;
-            front = originSize / 2 - 1;
-            back = front + size + 1;
-        }
+        int newSize = originSize > 4 ? originSize : 4;
+        T[] a = (T[]) new Object[newSize * 2 + 1];
+        System.arraycopy(items, front + 1, a, newSize / 2, size);
+        items = a;
+        front = newSize / 2 - 1;
+        back = front + size + 1;
     }
     private void deflact(int originSize) {
         T[] a = (T[]) new Object[originSize + 2];
@@ -99,41 +93,27 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> list = new ArrayDeque<>();
-        // d00002 Add N items, then remove first then last and ensure they're not null
-//        for (int i = 0; i < 7; i++) {
-//            list.addFirst(i);
-//        }
-//        list.removeFirst();
-//        list.removeLast();
+        // d003 add/remove/isEmpty
 //        list.addFirst(0);
-//        list.addFirst(1);
-//        list.addFirst(2);
-//        System.out.println(list.removeFirst());
-//        System.out.println(list.removeFirst());
-//        list.addFirst(5);
-        // d002 random add/remove/isempty
-//        list.addFirst(0);
-//        list.addFirst(1);
-//        System.out.println(list.removeFirst());
-//        list.addFirst(3);
-//        list.addFirst(10);
-
-//        System.out.println(list.size());
-//        list.addFirst(1);
+//        System.out.println(list.removeLast());
 //        list.addFirst(2);
 //        System.out.println(list.removeLast());
-//        list.addLast(4);
-//        list.isEmpty();
-//        list.addFirst(6);
-        // d008 fill up and empty and fill up
-        for (int i = 0; i < 10; i++) {
-            list.addFirst(i);
-        }
-        for (int i = 0; i < 10; i++) {
-            list.removeLast();
-        }
-        for (int i = 0; i < 7; i++) {
-            list.addFirst(i);
-        }
+//        list.addFirst(4);
+//        list.addFirst(5);
+        list.addFirst(0);
+        list.get(0);
+        list.removeLast();
+        list.addLast(3);
+        list.addLast(4);
+        list.addFirst(5);
+        list.removeLast();
+        list.removeLast();
+        list.get(0);
+        list.get(0);
+        list.addFirst(10);
+        list.removeFirst();
+        list.removeLast();
+        list.addFirst(13);
+        list.addFirst(14);
     }
 }
