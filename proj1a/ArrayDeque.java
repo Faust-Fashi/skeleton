@@ -91,29 +91,29 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> list = new ArrayDeque<>();
-        // d003 add/remove/isEmpty
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> list = new ArrayDeque<>();
+//        // d003 add/remove/isEmpty
+////        list.addFirst(0);
+////        System.out.println(list.removeLast());
+////        list.addFirst(2);
+////        System.out.println(list.removeLast());
+////        list.addFirst(4);
+////        list.addFirst(5);
 //        list.addFirst(0);
-//        System.out.println(list.removeLast());
-//        list.addFirst(2);
-//        System.out.println(list.removeLast());
-//        list.addFirst(4);
+//        list.get(0);
+//        list.removeLast();
+//        list.addLast(3);
+//        list.addLast(4);
 //        list.addFirst(5);
-        list.addFirst(0);
-        list.get(0);
-        list.removeLast();
-        list.addLast(3);
-        list.addLast(4);
-        list.addFirst(5);
-        list.removeLast();
-        list.removeLast();
-        list.get(0);
-        list.get(0);
-        list.addFirst(10);
-        list.removeFirst();
-        list.removeLast();
-        list.addFirst(13);
-        list.addFirst(14);
-    }
+//        list.removeLast();
+//        list.removeLast();
+//        list.get(0);
+//        list.get(0);
+//        list.addFirst(10);
+//        list.removeFirst();
+//        list.removeLast();
+//        list.addFirst(13);
+//        list.addFirst(14);
+//    }
 }
