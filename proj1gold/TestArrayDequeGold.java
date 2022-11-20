@@ -53,6 +53,8 @@ public class TestArrayDequeGold {
                         break;
                 }
                 assertEquals(log, solNum, stuNum);
+                // sth like  expected:<707> but was:<774>
+                // will be automatically added to the screen
             }
         }
 
