@@ -82,8 +82,23 @@ public class TestBSTMap {
     public void sanityPutTest() {
         BSTMap<String, Integer> b = new BSTMap<String, Integer>();
         b.put("hi", 1);
+        b.put("aa", 2);
+        b.put("zz", 3);
+        b.put("abb", 4);
         assertTrue(b.containsKey("hi"));
         assertTrue(b.get("hi") != null);
+    }
+    @Test
+    public void removeTest() {
+        BSTMap<String, Integer> b = new BSTMap<>();
+        b.put("4", 4);
+        for (int i = 0; i < 5; i++) {
+            b.put("" + i * 2, i);
+            b.put("" + i, i);
+        }
+        b.put("5", 5);
+        b.remove("0");
+        b.remove("2");
     }
 
     public static void main(String[] args) {
