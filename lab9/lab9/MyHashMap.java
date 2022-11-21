@@ -18,8 +18,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private ArrayMap<K, V>[] buckets;
     private int size;
 
-    private int loadFactor() {
-        return size / buckets.length;
+    private double loadFactor() {
+        return 1.0 * size / buckets.length;
     }
 
     public MyHashMap() {
@@ -74,8 +74,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         buckets[hashCode].put(key, value);
         size += buckets[hashCode].size;
     }
-    private void resize(int size) {
-        MyHashMap<K, V> newMap = new MyHashMap<>();
+    private void resize(int newSize) {
+        MyHashMap<K, V> newMap = new MyHashMap<>(newSize);
         for (ArrayMap<K, V> bucket : this.buckets) {
             for (K key : bucket) {
                 newMap.put(key, bucket.get(key));
