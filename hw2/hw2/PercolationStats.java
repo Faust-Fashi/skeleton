@@ -10,7 +10,6 @@ public class PercolationStats {
     public PercolationStats(int N, int T, PercolationFactory pf) {
         if (N <= 0 || T <= 0)
             throw new IllegalArgumentException();
-        pf = new PercolationFactory();
         Prob = new double[T];
         this.T = T;
         for (int i = 0; i < T; i++) {
@@ -36,7 +35,4 @@ public class PercolationStats {
         return mean() + 1.96 * stddev() / Math.sqrt(T);
     }
 
-    public static void main(String[] args) {
-
-    }
 }
