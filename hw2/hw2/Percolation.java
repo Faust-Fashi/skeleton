@@ -34,16 +34,12 @@ public class Percolation {
         openSize++;
         if (checkBoundary(row, col - 1, false) && isOpen(row, col - 1)) {
             grid.union(xyTo1D(row, col), xyTo1D(row, col - 1));
-            openSize++;
         }if (checkBoundary(row, col + 1, false) && isOpen(row, col + 1)) {
             grid.union(xyTo1D(row, col), xyTo1D(row, col + 1));
-            openSize++;
         }if (checkBoundary(row - 1, col, false) && isOpen(row - 1, col)) {
             grid.union(xyTo1D(row, col), xyTo1D(row - 1, col));
-            openSize++;
         }if (checkBoundary(row + 1, col, false) && isOpen(row + 1, col)) {
             grid.union(xyTo1D(row, col), xyTo1D(row + 1, col));
-            openSize++;
         }
     }
     // is the site (row, col) open?

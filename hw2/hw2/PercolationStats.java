@@ -4,8 +4,8 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
-    double[] Prob;
-    int T;
+    private double[] Prob;
+    private int T;
     // perform T independent experiments on an N-by-N grid
     public PercolationStats(int N, int T, PercolationFactory pf) {
         if (N <= 0 || T <= 0)
@@ -34,5 +34,9 @@ public class PercolationStats {
     }
     public double confidenceHigh(){
         return mean() + 1.96 * stddev() / Math.sqrt(T);
+    }
+
+    public static void main(String[] args) {
+
     }
 }
